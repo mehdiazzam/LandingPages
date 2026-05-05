@@ -1,0 +1,144 @@
+.header {
+  --header-accent: #c8f04e;
+  --header-accent-soft: rgba(200, 240, 78, 0.16);
+  --header-accent-glow: rgba(200, 240, 78, 0.08);
+  --header-ink: #f0ede6;
+  --header-muted: rgba(240, 237, 230, 0.6);
+  --header-border: rgba(240, 237, 230, 0.08);
+  position: relative;
+  padding: 32px 48px 24px;
+  border-bottom: 1px solid var(--header-border);
+  color: var(--header-ink);
+  overflow: hidden;
+}
+
+.header[data-tone='light'] {
+  --header-ink: #3d2b1a;
+  --header-muted: rgba(61, 43, 26, 0.6);
+  --header-border: rgba(61, 43, 26, 0.16);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(520px 160px at 18% -10%, var(--header-accent-soft), transparent 70%),
+    radial-gradient(480px 180px at 85% 0%, var(--header-accent-glow), transparent 70%);
+  pointer-events: none;
+}
+
+.topRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--header-muted);
+}
+
+.brand {
+  color: var(--header-ink);
+  letter-spacing: 0.22em;
+}
+
+.meta {
+  color: var(--header-muted);
+  letter-spacing: 0.2em;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--header-border);
+  background: transparent;
+  color: var(--header-ink);
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.backButton:hover {
+  color: var(--header-accent);
+  border-color: var(--header-accent);
+  transform: translateX(-2px);
+}
+
+.backArrow {
+  font-size: 12px;
+  margin-right: -2px;
+}
+
+.titleRow {
+  position: relative;
+  z-index: 1;
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(30px, 4.6vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--header-muted);
+  max-width: 640px;
+}
+
+.compact {
+  padding: 20px 48px 16px;
+}
+
+.compact .titleRow {
+  margin-top: 10px;
+}
+
+.compact .title {
+  font-size: clamp(20px, 2.8vw, 32px);
+  letter-spacing: -0.01em;
+}
+
+.compact .subtitle {
+  font-size: 11px;
+  max-width: 560px;
+}
+
+@media (max-width: 960px) {
+  .header {
+    padding: 24px;
+  }
+
+  .compact {
+    padding: 18px 24px 16px;
+  }
+
+  .title {
+    font-size: clamp(26px, 8vw, 40px);
+  }
+
+  .compact .title {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+
+  .subtitle {
+    max-width: none;
+  }
+}

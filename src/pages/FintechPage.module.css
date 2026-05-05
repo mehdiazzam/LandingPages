@@ -1,0 +1,333 @@
+:root {
+  --ink: #0a0a0a;
+  --paper: #f0ede6;
+  --accent: #c8f04e;
+  --dim: #2a2a2a;
+  --mid: #555;
+}
+
+.page {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Syne', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 82vh;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.heroLeft {
+  padding: 64px 48px;
+  border-right: 1px solid #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.heroEyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.heroHeadline {
+  font-size: clamp(52px, 6vw, 96px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  animation: fadeUp 0.8s ease both;
+}
+
+.heroHeadline em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.heroSub {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.7;
+  max-width: 380px;
+  padding-top: 32px;
+  animation: fadeUp 0.8s 0.15s ease both;
+}
+
+.heroRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroChartArea {
+  flex: 1;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.chartLabel {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+
+.chartWrapper {
+  width: 100%;
+  height: 260px;
+}
+
+.tickerRow {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid #1a1a1a;
+  padding: 16px 48px;
+}
+
+.tickerItem {
+  flex: 1;
+  border-right: 1px solid #1a1a1a;
+  padding: 0 24px 0 0;
+}
+.tickerItem:first-child { padding-left: 0; }
+.tickerItem:last-child { border-right: none; padding-left: 24px; }
+.tickerItem:nth-child(2) { padding-left: 24px; }
+
+.tickerLabel {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.tickerValue {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.tickerDelta {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.tickerDelta.neg { color: #ff5c5c; }
+
+/* MARQUEE */
+.marqueeWrap {
+  overflow: hidden;
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 14px 0;
+  background: #0d0d0d;
+}
+
+.marqueeInner {
+  display: flex;
+  gap: 0;
+  animation: marquee 22s linear infinite;
+  white-space: nowrap;
+}
+
+.marqueeItem {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #444;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0 40px;
+  border-right: 1px solid #1a1a1a;
+  flex-shrink: 0;
+}
+
+.marqueeItem span { color: var(--accent); margin-left: 8px; }
+
+/* GRID FEATURES */
+.gridSection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.gridCell {
+  padding: 56px 48px;
+  border-right: 1px solid #1a1a1a;
+  position: relative;
+}
+
+.gridCell:last-child { border-right: none; }
+
+.cellNum {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #444;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+
+.cellIcon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.cellTitle {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.cellBody {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #555;
+  line-height: 1.7;
+}
+
+.cellAccent {
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+  margin-top: 32px;
+}
+
+/* STATS */
+.statBand {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid #1a1a1a;
+  background: #0d0d0d;
+}
+
+.statCell {
+  padding: 48px;
+  border-right: 1px solid #1a1a1a;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.statCell:last-child { border-right: none; }
+
+.statNum {
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.statDesc {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* CTA */
+.ctaSection {
+  padding: 120px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.ctaTitle {
+  font-size: clamp(40px, 5vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.ctaTitle em { font-style: italic; color: var(--accent); }
+
+.ctaRight {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.ctaText {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 18px 32px;
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.2s;
+}
+
+.ctaBtn:hover { background: #deff6a; transform: translateY(-2px); }
+
+/* FOOTER */
+.footer {
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerLogo {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.footerLegal {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #333;
+  letter-spacing: 0.05em;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}

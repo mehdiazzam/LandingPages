@@ -1,0 +1,312 @@
+.hub {
+  min-height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  color: #f0ede6;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ─── CARD GRID ─────────────────────────────────────────────── */
+.cardGrid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #141414;
+}
+
+.cardRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr);
+  border-bottom: 1px solid #141414;
+}
+
+.cardRow:last-child {
+  border-bottom: none;
+}
+
+/* ─── CARD ───────────────────────────────────────────────────── */
+.card {
+  --card-accent: #c8f04e;
+  --card-bg: #0a0a0a;
+  --card-border: #141414;
+  --card-text-primary: #f0ede6;
+  --card-text-secondary: #555;
+  --card-brand-font: 'Syne', sans-serif;
+  --card-brand-style: normal;
+  --card-brand-weight: 700;
+  --card-brand-letter-spacing: -0.02em;
+  --card-index-font: 'Space Mono', monospace;
+  position: relative;
+  border-right: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--card-bg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardSummary {
+  --summary-accent: #c8f04e;
+  border-left: 1px solid #141414;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  background: #0a0a0a;
+}
+
+.cardSummaryLabel {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--summary-accent);
+}
+
+.cardSummaryText {
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #6a6a6a;
+  max-width: 320px;
+}
+
+/* Dimmed state when a sibling is hovered */
+.cardDimmed {
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Active (hovered) card */
+.cardActive {
+  z-index: 2;
+}
+
+/* Top row: index + arrow */
+.cardTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 32px 20px;
+  position: relative;
+  z-index: 2;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.cardIndex {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  font-family: var(--card-index-font);
+  color: var(--card-accent);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.cardActive .cardIndex { opacity: 1; }
+
+.cardArrowWrap {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-text-secondary);
+  transition: all 0.25s ease;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cardActive .cardArrowWrap {
+  color: var(--card-accent);
+  border-color: var(--card-accent);
+  transform: rotate(-45deg);
+}
+
+.cardArrowSvg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Preview area */
+.cardPreview {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--card-border);
+  flex-shrink: 0;
+}
+
+.cardPreviewInner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardActive .cardPreviewInner {
+  transform: scale(1.03);
+}
+
+.cardPreviewOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10,10,10,0.4) 100%);
+  pointer-events: none;
+}
+
+/* Body */
+.cardBody {
+  padding: 28px 32px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--card-bg);
+  flex: 1;
+}
+
+.cardIndustry {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--card-text-secondary);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.cardActive .cardIndustry { opacity: 1; }
+
+.cardBrand {
+  font-size: 38px;
+  line-height: 1;
+  margin: 4px 0 2px;
+  color: var(--card-text-primary);
+  font-family: var(--card-brand-font);
+  font-style: var(--card-brand-style);
+  font-weight: var(--card-brand-weight);
+  letter-spacing: var(--card-brand-letter-spacing);
+}
+
+.cardTagline {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--card-text-secondary);
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.cardActive .cardTagline { opacity: 1; }
+
+/* Footer */
+.cardFooter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px 32px;
+  border-top: 1px solid var(--card-border);
+  background: var(--card-bg);
+  flex-shrink: 0;
+}
+
+.cardPalette {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.paletteDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Accent slide-in line on left edge */
+.cardAccentLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--card-accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cardActive .cardAccentLine {
+  transform: scaleY(1);
+}
+
+/* ─── STATUS BAR ─────────────────────────────────────────────── */
+.statusBar {
+  height: 36px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #141414;
+  flex-shrink: 0;
+}
+
+.statusLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.statusText {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: #4a4a4a;
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+
+/* ─── VARIANTS ─────────────────────────────────────────────── */
+.variantFintech {
+  --card-brand-font: 'Space Mono', monospace;
+  --card-brand-style: normal;
+  --card-brand-weight: 800;
+  --card-brand-letter-spacing: -0.02em;
+  --card-index-font: 'Space Mono', monospace;
+}
+
+.variantRestaurant {
+  --card-brand-font: 'Fraunces', serif;
+  --card-brand-style: italic;
+  --card-brand-weight: 300;
+  --card-brand-letter-spacing: -0.01em;
+  --card-index-font: 'Space Mono', monospace;
+}
+
+.variantMusic {
+  --card-brand-font: 'Bebas Neue', sans-serif;
+  --card-brand-style: normal;
+  --card-brand-weight: 400;
+  --card-brand-letter-spacing: 0.08em;
+  --card-index-font: 'IBM Plex Mono', monospace;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .cardRow { grid-template-columns: 1fr; }
+  .cardSummary { border-left: none; border-top: 1px solid #141414; }
+}
